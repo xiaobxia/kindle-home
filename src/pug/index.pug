@@ -8,13 +8,14 @@ html
     script(src='/_js/jquery-3.1.0.min.js')
   body
     div.content
+      ul
     script.
       $.get('/tuiServer/kindle/getArticleLinks', function (res) {
         var list = res.data.list
         var html = ''
         for (var i=0;i<list.length;i++) {
           var item = list[i]
-          html += item.title
+          html += '<li><a href="'+item.url+'">'+item.title+'</a></li>'
         }
-        $('.content').html(html)
+        $('.content ul').html(html)
       })
