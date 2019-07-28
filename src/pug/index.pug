@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title kindle home
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1')
+    link(rel='stylesheet' href='/_css/main.css')
+    script(src='/_js/jquery-3.1.0.min.js')
+  body
+    div.content
+    script.
+      $.get('/tuiServer/kindle/getArticleLinks', function (res) {
+        var list = res.data.list
+        var html = ''
+        for (var i=0;i<list.length;i++) {
+          var item = list[i]
+          html += item.title
+        }
+        $('.content').html(html)
+      })
